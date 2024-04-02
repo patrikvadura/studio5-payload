@@ -2,7 +2,7 @@ const { nextui } = require('@nextui-org/react')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{tsx,ts}', './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'],
+  content: ['./**/*.{tsx,ts}', './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,
