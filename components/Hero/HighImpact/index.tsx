@@ -16,10 +16,10 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 }) => {
   return (
     <div className={`${classes.hero} flex justify-center items-center cs_parallax`}>
-      <div className={`${classes.background} cs_bg cs_parallax_bg`}>
+      <div className={classes.background}>
         {media && typeof media === 'object' && <Media resource={media} priority />}
       </div>
-      <div className="container">
+  <div className={classes.wrapper}>
         <div>
           <div className="flex flex-row items-center text-lg leading-loose mb-0">
             <svg
@@ -35,15 +35,15 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             {subtitle}
           </div>
 
-          <h1 className="text-5xl md:text-7xl pt-8 font-bold animate-fade-up animate-once animate-ease-in">
+          <h1 className={classes.title}>
             {title}
           </h1>
 
-          <div className="mt-12 md:pl-[52%]">
+          <div className="mt-8 md:mt-12 md:pl-[52%]">
             <RichText className="mb-12" content={richText} />
 
             {Array.isArray(links) && links.length > 0 && (
-              <div className="p-3 -m-3 inline-block">
+            <div className="p-0 md:p-3 -m-3 flex justify-center md:justify-start md:inline-block">
                 {links.map(({ link }, i) => {
                   return (
                     <div key={i}>

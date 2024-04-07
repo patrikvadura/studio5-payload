@@ -1,15 +1,39 @@
 .hero {
-  @apply min-h-[100vh] relative py-32 overflow-hidden;
+  @apply flex flex-col;
+  
+  @screen md {
+    @apply min-h-[100vh] relative py-32 overflow-hidden; 
+  }
 
   .background {
-    @apply absolute w-[45%] top-0 left-0;
-
-    height: calc(100% + 100px);
+    @apply relative w-full h-[250px];
+    
+    img {
+      @apply h-[250px] object-cover object-center;
+      
+      @screen md {
+        @pplay h-full;
+      }
+    }
+    
+    @screen md {
+      @apply absolute w-[45%] top-0 left-0;
+      
+      height: calc(100% + 100px);
+    }
   }
   > *:not(.background) {
     position: relative;
     z-index: 6;
   }
+}
+
+.wrapper {
+  @apply container p-4 md:p-0;
+}
+
+.title {
+@apply text-4xl md:text-7xl pt-4 md:pt-8 font-bold animate-fade-up animate-once animate-ease-in;
 }
 
 @keyframes textupdown {
