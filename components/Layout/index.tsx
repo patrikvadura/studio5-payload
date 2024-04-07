@@ -1,49 +1,27 @@
-'use client';
+'use client'
 
-import { GridProvider } from '@faceless-ui/css-grid';
-import { ModalContainer, ModalProvider } from '@faceless-ui/modal';
-import React from 'react';
-import { Header } from '../Header';
-import { MainMenu } from '../../payload-types';
-import cssVariables from '../../cssVariables';
-import '../../css/app.scss';
+import React from 'react'
+import { ModalContainer, ModalProvider } from '@faceless-ui/modal'
+
+import { FooterMenu, MainMenu } from '../../payload-types'
+import { Footer } from '../Footer'
+import { Header } from '../Header'
 
 type Props = {
   mainMenu: MainMenu
+  footerMenu: FooterMenu
   children: React.ReactNode
 }
 
-const Layout = ({
-  mainMenu,
-  children,
-}: Props): React.ReactElement => {
+const Layout = ({ mainMenu, footerMenu, children }: Props): React.ReactElement => {
   return (
     <React.Fragment>
-      <GridProvider
-        breakpoints={{
-          s: cssVariables.breakpoints.s,
-          m: cssVariables.breakpoints.m,
-          l: cssVariables.breakpoints.l,
-        }}
-        colGap={{
-          s: '24px',
-          m: '48px',
-          l: '48px',
-          xl: '72px',
-        }}
-        cols={{
-          s: 4,
-          m: 4,
-          l: 12,
-          xl: 12,
-        }}
-      >
-        <ModalProvider transTime={0} zIndex="var(--modal-z-index)">
-          <Header mainMenu={mainMenu} />
-          {children}
-          <ModalContainer />
-        </ModalProvider>
-      </GridProvider>
+      <ModalProvider transTime={0} zIndex="var(--modal-z-index)">
+        <Header mainMenu={mainMenu} />
+        {children}
+        <Footer footerMenu={footerMenu} />
+        <ModalContainer />
+      </ModalProvider>
     </React.Fragment>
   )
 }

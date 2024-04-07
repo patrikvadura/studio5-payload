@@ -3,6 +3,9 @@ import type { CollectionConfig } from 'payload/types'
 import { CallToAction } from '../blocks/CallToAction'
 import { Content } from '../blocks/Content'
 import { MediaBlock } from '../blocks/Media'
+import { NumberList } from '../blocks/NumberList'
+import { Slider } from '../blocks/Slider'
+import { SlidingText } from '../blocks/SlidingText'
 import { UIField } from '../components/UITest'
 import { hero } from '../fields/hero'
 import { slugField } from '../fields/slug'
@@ -51,7 +54,7 @@ export const Pages: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               required: true,
-              blocks: [CallToAction, Content, MediaBlock],
+              blocks: [CallToAction, Content, MediaBlock, SlidingText, Slider, NumberList],
             },
           ],
         },

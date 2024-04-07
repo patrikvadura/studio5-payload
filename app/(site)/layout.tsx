@@ -1,5 +1,9 @@
+import React from 'react'
+
 import Layout from '../../components/Layout'
 import { getPayloadClient } from '../../payload/payloadClient'
+
+import '../main.css'
 
 const SiteLayout = async ({ children }: { children: React.ReactNode }) => {
   const payload = await getPayloadClient()
@@ -8,7 +12,15 @@ const SiteLayout = async ({ children }: { children: React.ReactNode }) => {
     slug: 'main-menu',
   })
 
-  return <Layout mainMenu={mainMenu}>{children}</Layout>
+  const footerMenu = await payload.findGlobal({
+    slug: 'footer-menu',
+  })
+
+  return (
+    <Layout mainMenu={mainMenu} footerMenu={footerMenu}>
+      {children}
+    </Layout>
+  )
 }
 
 export default SiteLayout

@@ -1,7 +1,8 @@
-import type { Block, Field } from "payload/types";
-import { backgroundColor } from "../../fields/backgroundColor";
-import link from "../../fields/link";
-import richText from "../../fields/richText";
+import type { Block, Field } from 'payload/types'
+
+import { backgroundColor } from '../../fields/backgroundColor'
+import link from '../../fields/link'
+import richText from '../../fields/richText'
 
 const columnFields: Field[] = [
   richText(),
@@ -12,14 +13,16 @@ const columnFields: Field[] = [
   link({
     overrides: {
       admin: {
-        condition: (_: any, { enableLink }: { enableLink: boolean }) => Boolean(enableLink)
-      }
-    }
-  })
+        condition: (_: any, { enableLink }: { enableLink: boolean }) => Boolean(enableLink),
+      },
+    },
+  }),
 ]
 
 export const Content: Block = {
   slug: 'content',
+  imageURL:
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710625569/Payload/Blocks/block_content_kjylzr.webp',
   fields: [
     {
       type: 'row',
@@ -46,9 +49,9 @@ export const Content: Block = {
               label: 'Three Columns',
               value: 'threeColumns',
             },
-          ]
+          ],
         },
-      ]
+      ],
     },
     {
       name: 'columnOne',
@@ -60,8 +63,9 @@ export const Content: Block = {
       type: 'group',
       fields: columnFields,
       admin: {
-        condition: (_, { layout }) => ['twoThirdsOneThird', 'halfAndHalf', 'threeColumns'].includes(layout),
-      }
+        condition: (_, { layout }) =>
+          ['twoThirdsOneThird', 'halfAndHalf', 'threeColumns'].includes(layout),
+      },
     },
     {
       name: 'columnThree',
@@ -69,7 +73,7 @@ export const Content: Block = {
       fields: columnFields,
       admin: {
         condition: (_, { layout }) => layout === 'threeColumns',
-      }
-    }
-  ]
+      },
+    },
+  ],
 }
