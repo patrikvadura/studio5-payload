@@ -2,15 +2,12 @@ import React from 'react'
 import { Poppins } from 'next/font/google'
 import Script from 'next/script'
 
-import Footer from '../components/Footer'
 import { Providers } from './providers'
 
 const defaultFont = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
 })
-
-import './main.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gtmID: string | undefined = 'ID'
@@ -49,8 +46,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </noscript>
 
           {children}
-
-          <Footer />
         </Providers>
       </body>
     </html>

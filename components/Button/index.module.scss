@@ -1,4 +1,15 @@
-@import '../../css/type.scss';
+.button {
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  background-color: transparent;
+  text-decoration: none;
+  padding: 12px 24px;
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+}
 
 .content {
   display: flex;
@@ -13,39 +24,123 @@
 }
 
 .label {
-  @extend %label;
-  display: flex;
-  align-items: center;
+  @apply flex items-center text-center normal-case;
 }
 
-.button {
-  text-decoration: none;
-  display: inline-flex;
-  padding: 12px 18px;
-  margin-bottom: var(--base);
+.appearance--hero {
+  @apply relative overflow-hidden inline-flex items-center justify-center text-primary font-bold bg-white border-secondary;
+
+  height: 140px !important;
+  width: 140px !important;
+  min-width: 140px !important;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50%;
+  padding: 30px 15px;
+  transition: all .5s ease-in-out;
+  &:hover {
+    @apply text-white bg-primary border-none;
+
+    span {
+      @apply text-white opacity-100;
+    }
+  }
 }
 
-.primary--white {
-  background-color: black;
-  color: white;
+.appearance--dynamic {
+  @apply px-0 py-6 pl-8 relative inline-flex items-center text-secondary font-bold whitespace-nowrap no-underline;
+
+  &::before {
+    @apply size-16 absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-primary;
+
+    content: "";
+    transition: all .6s ease-in-out;
+  }
+
+  svg {
+    @apply ml-3;
+  }
+
+  >* {
+    @apply relative z-20;
+  }
+
+  &:hover {
+    @apply text-secondary;
+
+    &::before {
+      @apply size-8 -ml-6 left-full;
+    }
+  }
 }
 
-.primary--black {
-  background-color: white;
-  color: black;
+.appearance--arrowOnly {
+  @apply relative overflow-hidden block px-8 size-[45px];
+
+  > span {
+    @apply m-0 block text-[45px] text-secondary;
+
+    transition: all .6s;
+
+    &:first-child {
+      @apply relative;
+    }
+
+    &:last-child {
+      @apply absolute -left-[45px] -bottom-[45px];
+
+      transform: scale(.1);
+    }
+  }
+  &:hover {
+    span {
+      @apply text-primary;
+
+      &:first-child {
+        transform: translate(45px, -45px);
+      }
+      &:last-child {
+        transform: translate(65px, -45px) scale(1);
+      }
+    }
+  }
 }
 
-.secondary--white {
-  background-color: white;
-  box-shadow: inset 0 0 0 1px black;
+.appearance--primary {
+  @apply bg-primary text-white;
+
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    @apply bg-secondary text-white;
+  }
 }
 
-.secondary--black {
-  background-color: black;
-  box-shadow: inset 0 0 0 1px white;
+.appearance--secondary {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--theme-elevation-1000);
+}
+
+.primary--invert {
+  @apply bg-primary text-white;
+}
+
+.secondary--invert {
+  @apply bg-white text-secondary;
 }
 
 .appearance--default {
   padding: 0;
-  margin-left: -8px;
+  color: var(--theme-text);
+}
+
+.appearance--none {
+  padding: 0;
+  color: var(--theme-text);
+
+  .label {
+    text-transform: none;
+    line-height: inherit;
+    font-size: inherit;
+  }
 }

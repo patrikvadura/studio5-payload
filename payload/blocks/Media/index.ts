@@ -1,9 +1,12 @@
-import type { Block } from "payload/types";
-import { backgroundColor } from "../../fields/backgroundColor";
-import { slateEditor } from "@payloadcms/richtext-slate";
+import { slateEditor } from '@payloadcms/richtext-slate'
+import type { Block } from 'payload/types'
+
+import { backgroundColor } from '../../fields/backgroundColor'
 
 export const MediaBlock: Block = {
   slug: 'mediaBlock',
+  imageURL:
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710759866/Payload/Blocks/block_media-block_ayshne.webp',
   fields: [
     {
       type: 'row',
@@ -21,10 +24,10 @@ export const MediaBlock: Block = {
             {
               label: 'Fullscreen',
               value: 'fullscreen',
-            }
-          ]
+            },
+          ],
         },
-      ]
+      ],
     },
     {
       name: 'media',
@@ -39,9 +42,9 @@ export const MediaBlock: Block = {
       type: 'richText',
       editor: slateEditor({
         admin: {
-          elements: []
-        }
-      })
-    }
-  ]
+          elements: [],
+        },
+      }),
+    },
+  ],
 }

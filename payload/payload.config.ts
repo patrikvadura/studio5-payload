@@ -15,6 +15,7 @@ import { Pages } from './collections/Pages'
 import { Projects } from './collections/Projects'
 import { Users } from './collections/Users'
 import { MainMenu } from './globals/MainMenu'
+import { FooterMenu } from './globals/FooterMenu'
 import { Settings } from './globals/Settings'
 
 const adapter = s3Adapter({
@@ -63,7 +64,7 @@ export default buildConfig({
     bundler: webpackBundler(),
   },
   collections: [Pages, Projects, Users, Media, Categories],
-  globals: [MainMenu, Settings],
+  globals: [MainMenu, FooterMenu, Settings],
   typescript: {
     outputFile: path.resolve(__dirname, '../payload-types.ts'),
   },

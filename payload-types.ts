@@ -18,6 +18,7 @@ export interface Config {
   };
   globals: {
     'main-menu': MainMenu;
+    'footer-menu': FooterMenu;
     settings: Setting;
   };
 }
@@ -44,7 +45,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
         }[]
@@ -54,6 +55,11 @@ export interface Page {
   layout: (
     | {
         ctaBackgroundColor?: ('white' | 'black') | null;
+        richText?:
+          | {
+              [k: string]: unknown;
+            }[]
+          | null;
         links?:
           | {
               link: {
@@ -93,7 +99,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
         };
         columnTwo?: {
@@ -112,7 +118,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
         };
         columnThree?: {
@@ -131,7 +137,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
         };
         id?: string | null;
@@ -150,6 +156,54 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'mediaBlock';
+      }
+    | {
+        first: string;
+        second: string;
+        type?: ('outline' | 'solid') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'slidingText';
+      }
+    | {
+        slides?:
+          | {
+              title: string;
+              subtitle?: string | null;
+              richText?:
+                | {
+                    [k: string]: unknown;
+                  }[]
+                | null;
+              media: string | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'slider';
+      }
+    | {
+        listBackgroundColor?: ('white' | 'black') | null;
+        style?: ('outlinePrimary' | 'outlineSecondary' | 'solidPrimary' | 'solidSecondary') | null;
+        columns?:
+          | {
+              sizeField?: ('oneFourth' | 'oneThird') | null;
+              sizeNumber?: ('small' | 'default' | 'medium' | 'large') | null;
+              number: number;
+              extension?: string | null;
+              title?: string | null;
+              richText?:
+                | {
+                    [k: string]: unknown;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'numberList';
       }
   )[];
   slug?: string | null;
@@ -271,7 +325,7 @@ export interface Project {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
         }[]
@@ -281,6 +335,11 @@ export interface Project {
   layout: (
     | {
         ctaBackgroundColor?: ('white' | 'black') | null;
+        richText?:
+          | {
+              [k: string]: unknown;
+            }[]
+          | null;
         links?:
           | {
               link: {
@@ -320,7 +379,7 @@ export interface Project {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
         };
         columnTwo?: {
@@ -339,7 +398,7 @@ export interface Project {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
         };
         columnThree?: {
@@ -358,7 +417,7 @@ export interface Project {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
         };
         id?: string | null;
@@ -433,6 +492,26 @@ export interface PayloadMigration {
   createdAt: string;
 }
 export interface MainMenu {
+  id: string;
+  navItems?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+export interface FooterMenu {
   id: string;
   navItems?:
     | {

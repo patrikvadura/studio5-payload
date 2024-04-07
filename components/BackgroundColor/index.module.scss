@@ -1,9 +1,7 @@
 .white {
-  color: var(--color-base-1000);
-  background-color: var(--color-base-0);
+  @apply bg-white;
 }
 
 .black {
-  color: var(--color-base-0);
-  background-color: var(--color-base-1000);
+  @apply bg-black text-white;
 }

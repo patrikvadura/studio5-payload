@@ -1,36 +1,46 @@
-@use '../../css/queries.scss' as *;
-
 .header {
-  padding: var(--base) 0;
-  z-index: var(--header-z-index);
-}
+  @apply bg-white px-4 py-4 w-full z-50;
 
-.wrap {
-  display: flex;
-  justify-content: space-between;
+  @screen md {
+    @apply px-0;
+  }
 }
 
 .nav {
+  @apply hidden space-x-6;
+
+  @screen md {
+    @apply block;
+  }
+
   a {
-    text-decoration: none;
-    margin-left: var(--base);
-  }
-
-  @include mid-break {
-    display: none;
+    @apply text-[16px] font-semibold no-underline;
   }
 }
 
-.mobileMenuToggler {
-  all: unset;
-  cursor: pointer;
-  display: none;
-
+.mobileMenuToggle {
   &[aria-expanded="true"] {
-    transform: rotate(-25deg);
+    transform: rotate(-45deg);
   }
 
-  @include mid-break {
-    display: block;
+  @screen md {
+    @apply hidden;
   }
 }
+
+.mobileMenuModal {
+  @apply relative bg-white w-full h-full border-none p-0 z-50;
+
+  @screen md {
+    @apply hidden;
+  }
+}
+
+.mobileMenuItems {
+  @apply flex flex-col justify-center items-center space-y-8 px-4 h-full;
+}
+
+.menuItem {
+  @apply text-3xl font-bold mt-0;
+}
+
