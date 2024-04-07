@@ -15,7 +15,7 @@ const SliderContent = ({ slides }) => {
       <SliderTrack className={classes.track}>
         {slides.map((slide, index) => (
           <Slide index={index} key={index}>
-            <div className={classes.about}>
+          <div className={classes.slider}>
               {slide.media && typeof slide.media === 'object' && (
                 <Media resource={slide.media} className={classes.background} priority />
               )}

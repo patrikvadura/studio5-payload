@@ -1,5 +1,5 @@
-.hero {
-  @apply flex flex-col;
+  .hero {
+  @apply flex flex-col md:flex-row;
   
   @screen md {
     @apply min-h-[100vh] relative py-32 overflow-hidden; 
@@ -12,7 +12,7 @@
       @apply h-[250px] object-cover object-center;
       
       @screen md {
-        @pplay h-full;
+        @apply h-full;
       }
     }
     

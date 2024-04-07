@@ -26,7 +26,7 @@ export const NumberList: React.FC<
   return (
     <div className={listBackgroundColorClass}>
       <div className="container py-24 px-4 md:px-0">
-        <div className="grid grid-cols-12 gap-x-16 gap-y-16">
+        <div className="grid grid-cols-12 md:gap-x-16 gap-y-16">
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
@@ -80,8 +80,8 @@ export const NumberList: React.FC<
 
               return (
                 <div key={index} className={[columnSizeClass].filter(Boolean).join(' ')}>
-                  <div className="cs_funfact cs_style1">
-                    <div className="flex space-x-4 amin_auto_count">
+                  <div>
+                    <div className="flex space-x-4">
                       <Count
                         number={number}
                         text={extension}

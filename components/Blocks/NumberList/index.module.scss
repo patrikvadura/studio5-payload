@@ -1,7 +1,7 @@
 .image {
   @apply w-full overflow-hidden;
 
-  width: 100% !important;
+width: 100% !important;
 
   img {
     @apply h-full;
@@ -13,7 +13,7 @@
 
 .text {
   &Primary {
-    @apply relative my-4 pl-6 text-2xl leading-[56px] text-secondary font-bold z-0;
+    @apply relative my-4 pl-6 text-xl md:text-2xl leading-[56px] text-secondary font-bold z-0;
 
     &::before {
       @apply absolute left-0 top-0 rounded-full size-14 bg-gray-200 -z-10;
@@ -23,7 +23,7 @@
   }
 
   &Secondary {
-    @apply relative my-4 pl-6 text-2xl leading-[56px] text-secondary font-bold z-0;
+    @apply relative my-4 pl-6 text-xl md:text-2xl leading-[56px] text-secondary font-bold z-0;
 
     &::before {
       @apply absolute left-0 top-0 rounded-full size-14 bg-primary -z-10;
@@ -33,7 +33,7 @@
   }
 
   &White {
-    @apply relative my-4 pl-6 text-2xl leading-[56px] text-white font-bold z-0;
+    @apply relative my-4 pl-6 text-xl md:text-2xl leading-[56px] text-white font-bold z-0;
 
     &::before {
       @apply absolute left-0 top-0 rounded-full size-14 bg-primary -z-10;

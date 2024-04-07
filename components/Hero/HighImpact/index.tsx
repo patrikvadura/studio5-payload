@@ -15,7 +15,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
   links,
 }) => {
   return (
-    <div className={`${classes.hero} flex justify-center items-center cs_parallax`}>
+    <div className={`${classes.hero} flex justify-center items-center`}>
       <div className={classes.background}>
         {media && typeof media === 'object' && <Media resource={media} priority />}
       </div>
