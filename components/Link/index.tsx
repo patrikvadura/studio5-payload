@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import React from 'react';
-import { Page } from '../../payload-types';
-import { Button } from '../Button';
+import React from 'react'
+import Link from 'next/link'
+
+import { Page } from '../../payload-types'
+import { Button } from '../Button'
 
 type CMSLinkType = {
   type?: ('reference' | 'custom') | null
@@ -10,9 +11,9 @@ type CMSLinkType = {
     relationTo: 'pages'
     value: string | Page
   } | null
-  url?: any
+  url?: string | null | undefined
   label: string
-  appearance?: ('default' | 'primary' | 'secondary') | null
+  appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null
   children?: React.ReactNode
   className?: string
 }
@@ -27,13 +28,17 @@ export const CMSLink: React.FC<CMSLinkType> = ({
   children,
   className,
 }) => {
-  const href = (type === 'reference' && typeof reference?.value === 'object' && reference.value.slug) ? `/${reference.value.slug}` : url;
+  const href =
+    type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
+      ? `/${reference.value.slug}`
+      : url
 
   if (!appearance) {
-    const newTabProps = newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+    const newTabProps = newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
     if (type === 'custom') {
       return (
+        // @ts-ignore
         <a href={url} {...newTabProps} className={className}>
           {label && label}
           {children && children}
@@ -43,11 +48,7 @@ export const CMSLink: React.FC<CMSLinkType> = ({
 
     if (href) {
       return (
-        <Link
-          href={href}
-          className={className}
-          {...newTabProps} 
-        >
+        <Link href={href} className={className} {...newTabProps}>
           {label && label}
           {children && children}
         </Link>
@@ -60,9 +61,7 @@ export const CMSLink: React.FC<CMSLinkType> = ({
     href,
     appearance,
     label,
-  } 
+  }
 
-  return (
-    <Button className={className} {...buttonProps} el="link" />
-  )
+  return <Button className={className} {...buttonProps} el="link" />
 }
